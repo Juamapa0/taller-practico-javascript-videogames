@@ -11,8 +11,25 @@ function startGame() {
     }else {
         canvasSize = window.innerHeight * 0.8;
     }
+    
     canvas.setAttribute('width', canvasSize);
     canvas.setAttribute('height', canvasSize);
+
+    const elementsSize = canvasSize / 10;
+
+    console.log({ canvasSize, elementsSize});
+    
+    game.font = elementsSize + 'px Verdana';
+    game.texAlign = 'end';
+
+    for (let i =1; i <= 10; i++) {
+        game.fillText(emojis['X'], elementsSize * i, elementsSize); 
+    }
+    
+  
+
+
+
 
     
 
