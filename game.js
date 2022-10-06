@@ -1,30 +1,38 @@
 const canvas = document.querySelector('#game');
 const game = canvas.getContext('2d');
 
-window.addEventListener('load', startGame);
+let canvasSize;
+let elementsSize;
 
-function startGame() {
-    let canvasSize;
+window.addEventListener('load', setCanvasSize);
+window.addEventListener('resize', setCanvasSize);
 
-    if (window.innerHeight > window.innerWidth) {
+function setCanvasSize() {
+       if (window.innerHeight > window.innerWidth) {
         canvasSize = window.innerWidth * 0.8;
-    }else {
+    } else {
         canvasSize = window.innerHeight * 0.8;
     }
     
     canvas.setAttribute('width', canvasSize);
     canvas.setAttribute('height', canvasSize);
 
-    const elementsSize = canvasSize / 10;
+    elementsSize = canvasSize / 10;  
 
-    console.log({ canvasSize, elementsSize});
-    
+    startGame();
+}
+    function startGame(){
+        console.log({ canvasSize, elementsSize});
+
     game.font = elementsSize + 'px Verdana';
     game.texAlign = 'end';
 
-    for (let i =1; i <= 10; i++) {
-        game.fillText(emojis['X'], elementsSize * i, elementsSize); 
+    for (let i = 1; i <= 10; i++) {
+        game.fillText(emojis['X'], elementsSize *i, elementsSize );
+         
     }
+   
+}
     
   
 
@@ -41,8 +49,7 @@ function startGame() {
 
 
 
-    game.font ='25px Verdana'
-    game.fillStyle = 'purle';
-    game.texAling = 'start';
-    game.fillText('Platzi', 25, 25);
-}
+  //  game.font ='25px Verdana'
+  //  game.fillStyle = 'purle';
+  //  game.texAling = 'start';
+  //  game.fillText('Platzi', 25, 25);
