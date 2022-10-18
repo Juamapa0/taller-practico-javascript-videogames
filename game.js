@@ -70,6 +70,7 @@ function moveRight() {
 }
 function moveDown() {
   console.log('Me quiero mover hacia abajo');
+}
 
 
     
