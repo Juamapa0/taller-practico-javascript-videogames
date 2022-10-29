@@ -46,3 +46,27 @@ maps.push(`
   XX-----OXX
   XXXXXXXXXX
 `);
+maps.push(`
+  XI-----XXX
+  -XXXX-XXXX
+  -X----XXXX
+  XX-XXXXXXX
+  XX-----XXX
+  XX-XXXXXXX
+  XX----XXXX
+  XX-XXXXXXX
+  XX-----XXX
+  XXXXXX---O
+`);
+maps.push(`
+  X-----x--I
+  XX-XX-X-XX
+  XX--x---XX
+  XX-XXXXXXX
+  XX-----XXX
+  XXXXXX-XXX
+  XX-----XXX
+  XX-XXXXXXX
+  X------OXX
+  XXXXXXXXXX
+`);
