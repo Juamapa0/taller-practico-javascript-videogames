@@ -4,6 +4,7 @@ const btnUp = document.querySelector('#up');
 const btnLeft = document.querySelector('#left');
 const btnRight = document.querySelector('#right');
 const btnDown = document.querySelector('#down');
+const spanLives = document.querySelector('#lives');
 
 let canvasSize;
 let elementsSize;
@@ -114,6 +115,8 @@ function levelFail() {
   console.log('Chocaste contra un enemigo:(');
   lives--;
 
+  
+
   console.log(lives)
   if(lives <= 0) {
     level = 0;
@@ -127,6 +130,11 @@ function levelFail() {
 function gameWin() {
   console.log('Terminaste el juego');
 }
+
+function showLives()
+
+spanLives.innerHTML = emojis ['HEART']
+
 window.addEventListener('keydown', moveByKeys);
 btnUp.addEventListener('click', moveUp);
 btnLeft.addEventListener('click', moveLeft);
