@@ -5,11 +5,17 @@ const btnLeft = document.querySelector('#left');
 const btnRight = document.querySelector('#right');
 const btnDown = document.querySelector('#down');
 const spanLives = document.querySelector('#lives');
+const spanTime = document.querySelector('#time');
 
 let canvasSize;
 let elementsSize;
 let level = 0;
 let lives = 3;
+
+let timeStart;
+let timePlayer;
+let timeInterval;
+
 
 const playerPosition = {
   x: undefined,
@@ -50,10 +56,17 @@ function startGame() {
     gameWin();
     return;
   }
+
+  if (!timeStart) {
+    timeStart = Date.now();
+    timeInterval = setInterval(showTime, 100);
+  }
   const mapRows = map.trim().split('\n');
   const mapRowCols = mapRows.map(row => row.trim().split(''));
   console.log({map, mapRows, mapRowCols});
   
+  showLives();
+
   enemyPositions = [];
   game.clearRect(0, 0, canvasSize, canvasSize);
   mapRowCols.forEach((row, rowI) => {
@@ -115,12 +128,12 @@ function levelFail() {
   console.log('Chocaste contra un enemigo:(');
   lives--;
 
-  
 
   console.log(lives)
   if(lives <= 0) {
     level = 0;
-    lives = 3;   
+    lives = 3;  
+    timeStart = undefined; 
   } 
     playerPosition.x = undefined;
     playerPosition.y = undefined;
@@ -129,11 +142,20 @@ function levelFail() {
 
 function gameWin() {
   console.log('Terminaste el juego');
+  clearInterval(timeInterval);
 }
 
-function showLives()
+function showLives() {
+  const heartsArray = Array(lives).fill(emojis['HEART']); // [1,2,3]
+  //console.log(heartsArray);
 
-spanLives.innerHTML = emojis ['HEART']
+  spanLives.innerHTML = "";
+  heartsArray.forEach(heart => spanLives.append(heart));
+}
+
+function showTime() {
+  spanTime.innerHTML = Date.now() - timeStart;
+}
 
 window.addEventListener('keydown', moveByKeys);
 btnUp.addEventListener('click', moveUp);
