@@ -28,26 +28,37 @@ const giftPosition = {
   y: undefined,
 };
 let enemyPositions = [];
+
 window.addEventListener('load', setCanvasSize);
 window.addEventListener('resize', setCanvasSize);
 
+
+function fixNumber(n) {
+  return Number(n.toFixed(2));
+}
+
 function setCanvasSize() {
   if (window.innerHeight > window.innerWidth) {
-    canvasSize = window.innerWidth * 0.8;
+    canvasSize = window.innerWidth *0.8;
   } else {
-    canvasSize = window.innerHeight * 0.8;
+    canvasSize = window.innerHeight *0.8;
   }
+
+  canvasSize = Number(canvasSize.toFixed(0));
   
   canvas.setAttribute('width', canvasSize);
   canvas.setAttribute('height', canvasSize);
   
   elementsSize = canvasSize / 10;
 
+  playerPosition.x = undefined;
+  playerPosition.y = undefined;
   startGame();
 }
 
 function startGame() {
   console.log({ canvasSize, elementsSize });
+  // console.log(window.innerWidth, window.innerHeight);
 
   game.font = elementsSize + 'px Verdana';
   game.textAlign = 'end';
@@ -72,6 +83,7 @@ function startGame() {
 
   enemyPositions = [];
   game.clearRect(0, 0, canvasSize, canvasSize);
+
   mapRowCols.forEach((row, rowI) => {
     row.forEach((col, colI) => {
       const emoji = emojis[col];
@@ -83,6 +95,7 @@ function startGame() {
         playerPosition.x = posX;
         playerPosition.y = posY;
         console.log({playerPosition});
+        // console.log({playerPosition});
         }
       } else if (col == 'I') {
         giftPosition.x = posX;
@@ -97,6 +110,7 @@ function startGame() {
       game.fillText(emoji, posX, posY);    
     });
   });
+
   movePlayer();
 }
 
@@ -118,6 +132,7 @@ function movePlayer() {
   if (enemyCollision) {
     levelFail();
   }
+
   game.fillText(emojis['PLAYER'], playerPosition.x, playerPosition.y);
 }
 
@@ -144,16 +159,16 @@ function levelFail() {
   }
 
 function gameWin() {
-  console.log('Terminaste el juego');
+  console.log('¡Terminaste el juego!');
   clearInterval(timeInterval);
 
   const recordTime = localStorage.getItem('record_time');
   const playerTime  = Date.now() - timeStart;
 
   if (recordTime) {    
-    if (recordTime >=playerTime) {
+    if (recordTime >= playerTime) {
       localStorage.setItem('record_time', playerTime);
-      pResult.innerHTML = 'SUPERASTE EL RECORD';
+      pResult.innerHTML = 'SUPERASTE EL RECORD :)';
     } else {
       pResult.innerHTML = 'lo siento, no superaste el record :(';
     }
@@ -161,7 +176,8 @@ function gameWin() {
     localStorage.setItem('record_time', playerTime);
     pResult.innerHTML = '¿Primera vez?, pero  ahora trata de superar tu record:)';
   }
-  console.log({recordTime});
+
+  console.log({recordTime, playerTime});
 }
 
 function showLives() {

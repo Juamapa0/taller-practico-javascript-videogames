@@ -7,7 +7,7 @@ const emojis = {
   'BOMB_COLLISION': '🔥',
   'GAME_OVER': '👎',
   'WIN': '🏆',
-  'HEART':'❤',
+  'HEART':'💗',
 };
 
 const maps = [];
@@ -46,4 +46,40 @@ maps.push(`
   XX-XXXXXXX
   XX-----OXX
   XXXXXXXXXX
+`);
+maps.push(`
+  XI----XXXX
+  XXXXX-XXXX
+  XX----XXXX
+  XX-XXXXXXX
+  XX-----XXX
+  XXXXXX-XXX
+  XX---X-XXX
+  XX-X---XXX
+  XX-----XXX
+  O---XXXXXX  
+`);
+maps.push(`
+  XXXXXXXX-I
+  XXXXX-XX-X
+  XX----X--X
+  XX-XXX--XX
+  XX-----XXX
+  XX---X-XXX
+  XX-X---XXX
+  XX--X--XXX
+  O---XX-XXX 
+  XX-----XXX 
+`);
+maps.push(`
+  XXXXXXI--X
+  XXXXX-XX-X
+  XX----X--X
+  XX-XXX--XX
+  XXX---X--X
+  ---X-X-X-X
+  -X--X----X
+  ---X-----X
+  XXXXX-XXXX
+  O-----XXXX  
 `);
