@@ -39,9 +39,9 @@ function fixNumber(n) {
 
 function setCanvasSize() {
   if (window.innerHeight > window.innerWidth) {
-    canvasSize = window.innerWidth *0.8;
+    canvasSize = window.innerWidth * 0.8;
   } else {
-    canvasSize = window.innerHeight *0.8;
+    canvasSize = window.innerHeight * 0.8;
   }
 
   canvasSize = Number(canvasSize.toFixed(0));
@@ -75,6 +75,7 @@ function startGame() {
     timeInterval = setInterval(showTime, 100);
     showRecord();
   }
+
   const mapRows = map.trim().split('\n');
   const mapRowCols = mapRows.map(row => row.trim().split(''));
   console.log({map, mapRows, mapRowCols});
@@ -82,7 +83,7 @@ function startGame() {
   showLives();
 
   enemyPositions = [];
-  game.clearRect(0, 0, canvasSize, canvasSize);
+  game.clearRect(0,0, canvasSize, canvasSize);
 
   mapRowCols.forEach((row, rowI) => {
     row.forEach((col, colI) => {
