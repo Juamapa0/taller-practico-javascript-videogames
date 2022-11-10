@@ -1,4 +1,5 @@
 const canvas = document.querySelector('#game');
+const btnStart = document.querySelector('#start')
 const game = canvas.getContext('2d');
 const btnUp = document.querySelector('#up');
 const btnLeft = document.querySelector('#left');
@@ -39,9 +40,9 @@ function fixNumber(n) {
 
 function setCanvasSize() {
   if (window.innerHeight > window.innerWidth) {
-    canvasSize = window.innerWidth * 0.8;
+    canvasSize = window.innerWidth * 0.7;
   } else {
-    canvasSize = window.innerHeight * 0.8;
+    canvasSize = window.innerHeight * 0.7;
   }
 
   canvasSize = Number(canvasSize.toFixed(0));
@@ -49,18 +50,30 @@ function setCanvasSize() {
   canvas.setAttribute('width', canvasSize);
   canvas.setAttribute('height', canvasSize);
   
-  elementsSize = canvasSize / 10;
+  elementsSize = Number((canvasSize / 10).toFixed(0));
 
   playerPosition.x = undefined;
   playerPosition.y = undefined;
-  startGame();
+  //startGame();
+  
 }
 
+/**function newGame(){
+  level=0;
+  lives=3;
+  clearInterval( timeInterval )
+  timeStart = undefined
+  playerTime = undefined
+  playerPosition.x = undefined
+  playerPosition.y = undefined
+  startGame();
+}*/
+
 function startGame() {
-  console.log({ canvasSize, elementsSize });
+  //console.log({ canvasSize, elementsSize });
   // console.log(window.innerWidth, window.innerHeight);
 
-  game.font = elementsSize + 'px Verdana';
+  game.font = elementsSize * 0.8 + 'px Verdana';
   game.textAlign = 'end';
 
   const map = maps[level];
@@ -164,17 +177,17 @@ function gameWin() {
   clearInterval(timeInterval);
 
   const recordTime = localStorage.getItem('record_time');
-  const playerTime  = Date.now() - timeStart;
+  const playerTime  = spanTime.innerHTML = (Date.now() - timeStart)/1000;
 
   if (recordTime) {    
     if (recordTime >= playerTime) {
       localStorage.setItem('record_time', playerTime);
-      pResult.innerHTML = 'SUPERASTE EL RECORD :)';
+      pResult.innerHTML = 'SUPERASTE EL RECORD 😀';
     } else {
-      pResult.innerHTML = 'lo siento, no superaste el record :(';
+      pResult.innerHTML = 'Lo siento, no superaste el record 😲';      
     }
   } else {
-    localStorage.setItem('record_time', playerTime);
+    localStorage.setItem('record_time',playerTime);
     pResult.innerHTML = '¿Primera vez?, pero  ahora trata de superar tu record:)';
   }
 
@@ -190,7 +203,7 @@ function showLives() {
 }
 
 function showTime() {
-  spanTime.innerHTML = Date.now() - timeStart;
+  spanTime.innerHTML = parseInt((Date.now() - timeStart)/1000);
 }
 
 function showRecord() {
@@ -202,6 +215,8 @@ btnUp.addEventListener('click', moveUp);
 btnLeft.addEventListener('click', moveLeft);
 btnRight.addEventListener('click', moveRight);
 btnDown.addEventListener('click', moveDown);
+
+btnStart.addEventListener('click', gameStart);
 
 function moveByKeys(event) {
   if (event.key == 'ArrowUp') moveUp();
@@ -250,6 +265,17 @@ function moveDown() {
     playerPosition.y += elementsSize;
     startGame();
         }
+}
+
+function gameStart(){
+  level=0;
+  lives=3;
+  clearInterval( timeInterval )
+  timeStart = undefined
+  playerTime = undefined
+  playerPosition.x = undefined
+  playerPosition.y = undefined  
+  startGame();
 }
 
     

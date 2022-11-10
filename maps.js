@@ -3,7 +3,7 @@ const emojis = {
   'O': '🚪',
   'X': '💣',
   'I': '🎁',
-  'PLAYER': '💀',
+  'PLAYER': '😈',
   'BOMB_COLLISION': '🔥',
   'GAME_OVER': '👎',
   'WIN': '🏆',
@@ -47,7 +47,7 @@ maps.push(`
   XX-----OXX
   XXXXXXXXXX
 `);
-maps.push(`
+/**maps.push(`
   X-----XXXX
   XIXXX-XXXX
   XX----XXXX
@@ -57,7 +57,8 @@ maps.push(`
   XX---X-XXX
   XX-X---XXX
   XX-----XXX
-  O---XXXXXX  
+  O---XXXXXX
+  XIXXX-XXXX    
 `);
 maps.push(`
   XXXXXXX---
@@ -71,15 +72,15 @@ maps.push(`
   O---XX-XXX 
   XX-----XXX 
 `);
-maps.push(`
+/**maps.push(`
   XXXXXXI--X
   XXXXX-XX-X
   XX----X--X
   XX-XXX--XX
-  XXX---X--X
+  XXX---X-XX
   ---X-X-X-X
   -X--X----X
   ---X-----X
   XXXXX-XXXX
   O-----XXXX  
-`);
+`);*/
