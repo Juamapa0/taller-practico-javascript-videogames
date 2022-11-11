@@ -1,3 +1,8 @@
+/*
+*Reglas: 
+*El final de cada nivel debe ser el comienzo del siguiente
+*/
+
 const emojis = {
   '-': ' ',
   'O': '🚪',
@@ -47,9 +52,9 @@ maps.push(`
   XX-----OXX
   XXXXXXXXXX
 `);
-/**maps.push(`
-  X-----XXXX
-  XIXXX-XXXX
+maps.push(`
+  O-----XXXX
+  XXXXX-XXXX
   XX----XXXX
   XX-XXXXXXX
   XX-----XXX
@@ -57,8 +62,7 @@ maps.push(`
   XX---X-XXX
   XX-X---XXX
   XX-----XXX
-  O---XXXXXX
-  XIXXX-XXXX    
+  XI--XXXXXX      
 `);
 maps.push(`
   XXXXXXX---
@@ -69,18 +73,35 @@ maps.push(`
   XX-X---XXX
   XX--X--XXX
   XXX-------
-  O---XX-XXX 
-  XX-----XXX 
+  X---XX-XXX 
+  XO-----XXX 
+`);
+maps.push(`
+  XX---X-I-X
+  XX-X---X-X
+  XX--X-X--X
+  XX-XXX--XX
+  XX----X-XO
+  ---X-X-X--
+  -X--X----X
+  ---X---X-X
+  X-XXX-XXXX
+  X-----XXXX  
 `);
 /**maps.push(`
-  XXXXXXI--X
-  XXXXX-XX-X
-  XX----X--X
-  XX-XXX--XX
-  XXX---X-XX
-  ---X-X-X-X
-  -X--X----X
-  ---X-----X
-  XXXXX-XXXX
-  O-----XXXX  
+  XX---X-O-XXXXXX
+  XX-X---X-XXXXXX
+  XX--X-X--XXXXXX
+  XX-XXX--XXXXXXX
+  XX----X-XXXXXXX
+  ---X-X-X-------
+  -X--X----XXXX--
+  ---X---X-X----X
+  X-XXX-XXXXXXXXX
+  X-----XXXX-----
+  XXXXXXXXXXXXXXX
+  XXXXXXXXXXXXXXX
+  XXXXXXXXXXXXXXX
+  XXXXXXXXXXXXXXX
+  XXXXXXXXXXXXXXX  
 `);*/
