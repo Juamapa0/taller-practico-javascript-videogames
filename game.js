@@ -1,5 +1,5 @@
 const canvas = document.querySelector('#game');
-const btnStart = document.querySelector('#start')
+const btnStart = document.querySelector('#new')
 const game = canvas.getContext('2d');
 const btnUp = document.querySelector('#up');
 const btnLeft = document.querySelector('#left');
@@ -73,7 +73,7 @@ function startGame() {
   //console.log({ canvasSize, elementsSize });
   // console.log(window.innerWidth, window.innerHeight);
 
-  game.font = elementsSize * 0.8 + 'px Verdana';
+  game.font = elementsSize * 0.9 + 'px Verdana';
   game.textAlign = 'end';
 
   const map = maps[level];
@@ -174,7 +174,7 @@ function levelFail() {
 
 function gameWin() {
   console.log('¡Terminaste el juego!');
-  clearInterval(timeInterval);
+  clearInterval(timeInterval);  
 
   const recordTime = localStorage.getItem('record_time');
   const playerTime  = spanTime.innerHTML = (Date.now() - timeStart)/1000;
@@ -216,7 +216,7 @@ btnLeft.addEventListener('click', moveLeft);
 btnRight.addEventListener('click', moveRight);
 btnDown.addEventListener('click', moveDown);
 
-btnStart.addEventListener('click', gameStart);
+btnStart.addEventListener('click', newGame);
 
 function moveByKeys(event) {
   if (event.key == 'ArrowUp') moveUp();
@@ -267,7 +267,7 @@ function moveDown() {
         }
 }
 
-function gameStart(){
+function newGame(){
   level=0;
   lives=3;
   clearInterval( timeInterval )

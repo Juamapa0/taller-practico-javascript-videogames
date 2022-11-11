@@ -28,7 +28,17 @@ body {
     margin: 0 auto;
     width: 100%;
   }
-
+  /*#start {
+    color:#fff;
+    background-color:black;
+    width:150px;
+    height: 150px;
+    border-radius: 100px;
+    font-size: medium;
+    font-weight: 600;
+    /*position:absolute;
+    
+  }*/
   
   button {
     background-color: #fdef05;
