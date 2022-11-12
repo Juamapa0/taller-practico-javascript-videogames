@@ -81,12 +81,24 @@ maps.push(`
   XX-X---X-X
   XX--X-X--X
   XX-XXX--XX
-  XX----X-XO
+  XX----XXO-
   ---X-X-X--
   -X--X----X
   ---X---X-X
   X-XXX-XXXX
   X-----XXXX  
+`);
+maps.push(`
+  XX---X-OXX
+  XX-X---X-X
+  XX--X-X--I
+  ---XXX--X-
+  -XX---XXX-
+  ---X-X-X--
+  -X--X-XX-X
+  X--X---X-X
+  X-XX-X-X-X
+  X----X---X  
 `);
 /**maps.push(`
   XX---X-O-XXXXXX

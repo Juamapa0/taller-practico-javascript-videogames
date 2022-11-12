@@ -1,6 +1,6 @@
-const canvas = document.querySelector('#game');
+const canvas = document.querySelector('#game');//selección de elemento -manipulación del DOM
+const game = canvas.getContext('2d');//Crear un contexto para acceder a los métodos para dibujar sobre el canvas/ 2d = dos dimensiones
 const btnStart = document.querySelector('#new')
-const game = canvas.getContext('2d');
 const btnUp = document.querySelector('#up');
 const btnLeft = document.querySelector('#left');
 const btnRight = document.querySelector('#right');
@@ -30,7 +30,7 @@ const giftPosition = {
 };
 let enemyPositions = [];
 
-window.addEventListener('load', setCanvasSize);
+window.addEventListener('load', setCanvasSize);// que se ejecute con el Evento a nuestro html, apenas cargue-envento de 'load' a window
 window.addEventListener('resize', setCanvasSize);
 
 
@@ -58,23 +58,15 @@ function setCanvasSize() {
   
 }
 
-/**function newGame(){
-  level=0;
-  lives=3;
-  clearInterval( timeInterval )
-  timeStart = undefined
-  playerTime = undefined
-  playerPosition.x = undefined
-  playerPosition.y = undefined
-  startGame();
-}*/
 
+//Crear una función para inicializar, código que se ejecuta al principio
 function startGame() {
   //console.log({ canvasSize, elementsSize });
   // console.log(window.innerWidth, window.innerHeight);
 
-  game.font = elementsSize * 0.9 + 'px Verdana';
-  game.textAlign = 'end';
+  game.font = elementsSize * 0.9 + 'px Verdana';//se le asignan valores, no se los llaman como métodos
+  game.textAlign = 'end';// se le asigna un valor fijo, para emepzar o tenerminar en esa posición
+  //game.fillStyle = 'red';
 
   const map = maps[level];
 
@@ -121,7 +113,7 @@ function startGame() {
           });
       }
 
-      game.fillText(emoji, posX, posY);    
+      game.fillText(emoji, posX, posY);//método para insertar texto   
     });
   });
 
