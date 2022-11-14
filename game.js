@@ -10,7 +10,7 @@ const spanTime = document.querySelector('#time');
 const spanRecord = document.querySelector('#record');
 const pResult = document.querySelector('#result');
 
-let canvasSize;
+let canvasSize;//le asigno el valor del width y el height
 let elementsSize;
 let level = 0;
 let lives = 3;
@@ -39,16 +39,16 @@ function fixNumber(n) {
 }
 
 function setCanvasSize() {
-  if (window.innerHeight > window.innerWidth) {
-    canvasSize = window.innerWidth * 0.7;
+  if (window.innerHeight > window.innerWidth) {//si el height es mayor que el width
+    canvasSize = window.innerWidth * 0.7;// el canvasSize que sea igual al width
   } else {
-    canvasSize = window.innerHeight * 0.7;
+    canvasSize = window.innerHeight * 0.7;//si el widht es  el mayor que sea igual al height
   }
 
   canvasSize = Number(canvasSize.toFixed(0));
   
-  canvas.setAttribute('width', canvasSize);
-  canvas.setAttribute('height', canvasSize);
+  canvas.setAttribute('width', canvasSize);//le asigno al canvas un width y un height mediante la variable
+  canvas.setAttribute('height', canvasSize);//canvasSize
   
   elementsSize = Number((canvasSize / 10).toFixed(0));
 
