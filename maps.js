@@ -100,20 +100,3 @@ maps.push(`
   X-XX-X-X-X
   X----X---X  
 `);
-/**maps.push(`
-  XX---X-O-XXXXXX
-  XX-X---X-XXXXXX
-  XX--X-X--XXXXXX
-  XX-XXX--XXXXXXX
-  XX----X-XXXXXXX
-  ---X-X-X-------
-  -X--X----XXXX--
-  ---X---X-X----X
-  X-XXX-XXXXXXXXX
-  X-----XXXX-----
-  XXXXXXXXXXXXXXX
-  XXXXXXXXXXXXXXX
-  XXXXXXXXXXXXXXX
-  XXXXXXXXXXXXXXX
-  XXXXXXXXXXXXXXX  
-`);*/
