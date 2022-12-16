@@ -5,30 +5,30 @@ const btnUp = document.querySelector('#up');//elemento seleccionado
 const btnLeft = document.querySelector('#left');
 const btnRight = document.querySelector('#right');
 const btnDown = document.querySelector('#down');
-const spanLives = document.querySelector('#lives');
-const spanTime = document.querySelector('#time');
+const spanLives = document.querySelector('#lives');//crea el texto para imprimir las vidas
+const spanTime = document.querySelector('#time');//crea texto del tiempo de juego
 const spanRecord = document.querySelector('#record');
 const pResult = document.querySelector('#result');
 
 let canvasSize;//le asigno el valor del width y el height
 let elementsSize;// elementos dentro del canvas
-let level = 0;
-let lives = 3;
+let level = 0;//niveles, arranca en cero por que trabajamos con arrays
+let lives = 3;//variable de las vidas
 
 let timeStart;
 let timePlayer;
-let timeInterval;
+let timeInterval;//
 
 
-const playerPosition = {
+const playerPosition = {//variable = a un objeto /el jugador utiliza playerPosition para saber donde posicionarse
   x: undefined,
   y: undefined,  
 };
-const giftPosition = {
+const giftPosition = { //variable = a un objeto , el regalo que aparece en le juego
   x: undefined,
   y: undefined,
 };
-let enemyPositions = [];
+let enemyPositions = [];//variable tipo let, permite limpiar el arreglo por cada movimiento
 
 window.addEventListener('load', setCanvasSize);// que se ejecute con el Evento a nuestro html, apenas cargue-envento de 'load' a window
 window.addEventListener('resize', setCanvasSize);//evento del navegador, ejecuta la función setCanvasSize
@@ -72,14 +72,14 @@ function startGame() {
 
   const map = maps[level];//map = string / .split lo convirte en un arreglo
 
-  if(!map) {
-    gameWin();
+  if(!map) {//si no hy mas mapas
+    gameWin();// ejecuta a la función gameWin-detecta cuando termina el juego
     return;
   }
 
-  if (!timeStart) {
+  if (!timeStart) {//si no existe un timeStart el juego acaba de iniciar
     timeStart = Date.now();
-    timeInterval = setInterval(showTime, 100);
+    timeInterval = setInterval(showTime, 100);//set interval se ejecuta cada 100 milisegundos e imprimi la función showTime 
     showRecord();
   }
 
@@ -100,17 +100,17 @@ function startGame() {
       const posY = elementsSize * (rowI + 1);//calcúlo la posición de las filas
 
       if (col == 'O') {
-        if (!playerPosition.x && !playerPosition.y) {
+        if (!playerPosition.x && !playerPosition.y) {// si pP.x y pP.y tienen algun valor no se ejecuta el código de abajo
         playerPosition.x = posX;
         playerPosition.y = posY;
         console.log({playerPosition});
         // console.log({playerPosition});
         }
-      } else if (col == 'I') {
+      } else if (col == 'I') { // si nos encontramos con la I
         giftPosition.x = posX;
         giftPosition.y = posY;
-      } else if (col == 'X') {
-        enemyPositions.push({
+      } else if (col == 'X') {// si nos encontramos la X  
+        enemyPositions.push({//con el método push estamos mutando un array
             x: posX,
             y: posY,
           });
@@ -124,22 +124,22 @@ function startGame() {
 }
 
 function movePlayer() {
-  const giftCollisionX = playerPosition.x.toFixed(3) == giftPosition.x.toFixed(3);
-  const giftCollisionY = playerPosition.y.toFixed(3) == giftPosition.y.toFixed(3);
-  const giftCollision = giftCollisionX && giftCollisionY;
+  const giftCollisionX = playerPosition.x.toFixed(3) == giftPosition.x.toFixed(3);//si el playerP coincide con el giftP
+  const giftCollisionY = playerPosition.y.toFixed(3) == giftPosition.y.toFixed(3);//toFixed para controlar la natidad de decimales, se indican entre paréntesis
+  const giftCollision = giftCollisionX && giftCollisionY;// va a ser true si ambas condiciones se cumplen
 
-  if (giftCollision) {
-    levelWin();   
+  if (giftCollision) {//si chocó con el regalito entoces sube de nivel
+    levelWin();   //sube de nivel
   }
 
-  const enemyCollision = enemyPositions.find(enemy => {
+  const enemyCollision = enemyPositions.find(enemy => {//método find= devuelve el elemento que cumple con la condición puesta
     const enemyCollisionX = enemy.x.toFixed(3) == playerPosition.x.toFixed(3);
     const enemyCollisionY = enemy.y.toFixed(3) == playerPosition.y.toFixed(3);
-    return enemyCollisionX && enemyCollisionY;
+    return enemyCollisionX && enemyCollisionY;//detecta la colisión con enemigos
   });
 
-  if (enemyCollision) {
-    levelFail();
+  if (enemyCollision) {//detecta colisión con un enemigo
+    levelFail();//ejecuta la función levelFail
   }
 
   game.fillText(emojis['PLAYER'], playerPosition.x, playerPosition.y);
@@ -147,27 +147,27 @@ function movePlayer() {
 
 function levelWin() {
   console.log('Subiste de nivel');
-  level++;
+  level++;//suma uno al nivel
   startGame();
 }
 
-function levelFail() {
+function levelFail() {//función para detectar colisiones con enemigos
   console.log('Chocaste contra un enemigo:(');
-  lives--;
+  lives--;//resta de a una vida por cada choque
 
 
   console.log(lives)
-  if(lives <= 0) {
-    level = 0;
-    lives = 3;  
-    timeStart = undefined; 
+  if(lives <= 0) {//si las vidas son menores o iguales a cero
+    level = 0;//nivel cero
+    lives = 3; //vuelven las tres vidas 
+    timeStart = undefined; //¿por qué undefined?
   } 
-    playerPosition.x = undefined;
-    playerPosition.y = undefined;
+    playerPosition.x = undefined;//¿por qué undefined?
+    playerPosition.y = undefined;//¿por qué undefined?
     startGame(); 
   }
 
-function gameWin() {
+function gameWin() {//función para marcar el final del juego
   console.log('¡Terminaste el juego!');
   clearInterval(timeInterval);  
 
@@ -189,16 +189,16 @@ function gameWin() {
   console.log({recordTime, playerTime});
 }
 
-function showLives() {
-  const heartsArray = Array(lives).fill(emojis['HEART']); // [1,2,3]
+function showLives() {//muestra la cantidad de vidas
+  const heartsArray = Array(lives).fill(emojis['HEART']); // [1,2,3] creo un Array con posiciones insertadas con .fill le doy un contenido 
   //console.log(heartsArray);
 
-  spanLives.innerHTML = "";
-  heartsArray.forEach(heart => spanLives.append(heart));
+  spanLives.innerHTML = "";//limpia el span ¿?
+  heartsArray.forEach(heart => spanLives.append(heart));//cada posicion es un corazón
 }
 
-function showTime() {
-  spanTime.innerHTML = parseInt((Date.now() - timeStart)/1000);
+function showTime() {//muestra la cantidad de tiempo de juego
+  spanTime.innerHTML = parseInt((Date.now() - timeStart)/1000);//Date.now, funcíon,nos permite imprimir
 }
 
 function showRecord() {
@@ -222,7 +222,7 @@ function moveByKeys(event) {//función que se ejecuta la presionar cualquier tec
 function moveUp() {
   console.log('Me quiero mover hacia arriba');
   
-  if ((playerPosition.y - elementsSize) < elementsSize) {
+  if ((playerPosition.y - elementsSize) < elementsSize) {//resta para subir sobre el eje y
       console.log('OUT');
   } else {
     playerPosition.y -= elementsSize;
@@ -232,7 +232,7 @@ function moveUp() {
 function moveLeft() {
   console.log('Me quiero mover hacia izquierda');
 
-  if ((playerPosition.x - elementsSize) < elementsSize) {
+  if ((playerPosition.x - elementsSize) < elementsSize) {//resta para ir a la izquierda
     console.log('OUT');
   } else {
     playerPosition.x -= elementsSize;
@@ -243,7 +243,7 @@ function moveLeft() {
 function moveRight() {
   console.log('Me quiero mover hacia derecha');
   
-  if ((playerPosition.x + elementsSize) > canvasSize) {
+  if ((playerPosition.x + elementsSize) > canvasSize) {//suma para moverse en el eje x a la derecha y valida contra si es mayor al canvasSize
     console.log('OUT');
   } else {
     playerPosition.x += elementsSize;
@@ -254,7 +254,7 @@ function moveRight() {
 function moveDown() {
   console.log('Me quiero mover hacia abajo');
   
-  if ((playerPosition.y + elementsSize) > canvasSize) {
+  if ((playerPosition.y + elementsSize) > canvasSize) {//suma para moverse en el eje y
     console.log('OUT');
   } else {
     playerPosition.y += elementsSize;
